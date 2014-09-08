@@ -232,26 +232,26 @@
 	                <div class="col-sm-12 contact section-description wow fadeIn">
 	                    <h2>Contact us</h2>
 	                    <p>
-	                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut 
-		                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+	                    	Questions? Suggestions? Comments? Error reports? Let us know!
 	                    </p>
 	                </div>
 	            </div>
 	            <div class="row">
 	                <div class="col-sm-7 contact-form wow fadeInLeft">
 	                    <h3>Send us a message</h3>
-	                    <form method="post" action="assets/contact.php">
-	                        <input type="text" name="email" placeholder="Email..." class="contact-email">
-	                        <input type="text" name="subject" placeholder="Subject..." class="contact-subject">
-	                        <textarea name="message" placeholder="Message..." class="contact-message"></textarea>
+	                    <form id="contact-form">
+	                        <input type="text" id="name" placeholder="Your Name" class="contact-subject"/>
+	                        <input type="text" id="email" placeholder="Your Email Address *" class="contact-email" required="required">
+	                        <input type="text" id="subject" placeholder="Subject *" class="contact-subject" required="required">
+	                        <textarea id="message" placeholder="Your Message *" class="contact-message" required="required"></textarea>
 	                        <button type="submit">Send message</button>
 	                    </form>
 	                </div>
 	                <div class="col-sm-5 contact-address wow fadeInUp">
 	                    <h3>Contact details</h3>
-	                    <p><i class="fa fa-map-marker"></i>Via Principe Amedeo 9, 10100, Torino, TO, Italy</p>
-	                    <p><i class="fa fa-phone"></i>Phone: 0039 333 12 68 347</p>
-	                    <p><i class="fa fa-envelope"></i>Email: <a href="">contact@yourdomain.com</a></p>
+	                    <p><i class="fa fa-map-marker"></i>1204 Elmwood Avenue, Nashville, TN 37212</p>
+	                    <p><i class="fa fa-phone"></i>Phone: +1 (615) 988-4700</p>
+	                    <p><i class="fa fa-envelope"></i>Email: <a href="mailto: info@acklenavenue.com">info@acklenavenue.com</a></p>
 	                </div>
 	            </div>
 	        </div>
@@ -290,12 +290,43 @@
         <![endif]-->
 
         <script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		  ga('create', 'UA-42413832-3', 'auto');
-		  ga('send', 'pageview');
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-42413832-3', 'auto');
+            ga('send', 'pageview');
+
+            $("#contact-form").submit(function(e) {
+                e.preventDefault();
+
+                var mailModel = {
+                    Name: $("#name").val(),
+                    Email: $("#email").val(),
+                    ProjectName: $("#subject").val(),
+                    Message: $("#message").val()
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://emailer-3.apphb.com/Mail",
+                    data: mailModel,
+                    dataType: 'application/json',
+                    success: function(msg) {
+                        alert("Your message was sent successfully!");
+                        $("#name").val("");
+                        $("#email").val("");
+                        $("#subject").val("");
+                        $("#message").val("");
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        alert("Your message was not sent. Please try again later.");
+                    }
+                });
+
+                return false;
+            });
 		</script>
     </body>
 
