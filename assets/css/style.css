@@ -54,6 +54,16 @@ img { max-width: 100%; }
 .section-description h2 {
 	color: #333;
 }
+
+.section-privacy {
+	margin-top: 60px;
+    padding-bottom: 10px;
+}
+
+.section-privacy h2 {
+	color: #333;
+}
+
 .section-container-full-bg .section-description h2 { color: #fff; }
 
 .section-description p {
@@ -61,6 +71,14 @@ img { max-width: 100%; }
 	padding: 0 120px;
     font-size: 22px;
     line-height: 36px;
+}
+
+.section-privacy p {
+    margin-top: 30px;
+	padding: 0 120px;
+    font-size: 22px;
+    line-height: 36px;
+    text-align: justify;
 }
 
 .divider-1 {

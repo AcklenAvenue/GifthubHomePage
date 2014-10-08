@@ -34,10 +34,10 @@ jQuery(document).ready(function() {
     /*
         Fullscreen background
     */
-    $('.top-content').backstretch("assets/img/backgrounds/1.jpg");
-    $('.single-feature-container.section-container-full-bg').backstretch("assets/img/backgrounds/1.jpg");
-    $('.call-to-action-container').backstretch("assets/img/backgrounds/1.jpg");
-    $('.contact-container').backstretch("assets/img/backgrounds/2.jpg");
+    $('.top-content').backstretch("/assets/img/backgrounds/1.jpg");
+    $('.single-feature-container.section-container-full-bg').backstretch("/assets/img/backgrounds/1.jpg");
+    $('.call-to-action-container').backstretch("/assets/img/backgrounds/1.jpg");
+    $('.contact-container').backstretch("/assets/img/backgrounds/2.jpg");
     
     /*
         Wow
